@@ -1,0 +1,15 @@
+.revelar {
+  width: 250px;
+  height: 50px;
+  border: 1px solid #333;
+  overflow: hidden;
+}
+.revelar .texto {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  padding: 15px;
+  margin: 0;
+}
+.revelar:hover .texto {
+  opacity: 1;
+}/*# sourceMappingURL=style.css.map */

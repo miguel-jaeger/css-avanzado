@@ -1,0 +1,86 @@
+// Variables de colores para facilitar cambios futuros
+$color-servicios: #ffc000;
+$color-recursos: #b81800;
+$color-proyectos: #00a53c;
+$color-contacto: #9600b4;
+$color-white: #fff;
+$color-black: #000;
+
+.menu {
+    display: block;
+    position: relative;
+    height: 76px;
+    width: 25%;
+    margin: 0;
+    overflow: hidden;
+
+    // Modificadores de color y bordes superiores
+    &.servicios { 
+        border-top: $color-servicios 0.5em solid; 
+        & > span > span { background: $color-servicios; }
+    }
+    &.recursos { 
+        border-top: $color-recursos 0.3em solid; 
+        & > span > span { background: $color-recursos; }
+    }
+    &.proyectos { 
+        border-top: $color-proyectos 0.3em solid; 
+        & > span > span { background: $color-proyectos; }
+    }
+    &.contacto { 
+        border-top: $color-contacto 0.3em solid; 
+        & > span > span { background: $color-contacto; }
+    }
+
+    // Estilos compartidos para el pseudo-elemento y spans internos
+    &:after, 
+    & > span > span {
+        display: block;
+        text-align: center;
+        border-radius: 0em;
+        padding: 2em 0 1.5em;
+    }
+
+    &:after {
+        content: attr(data-title);
+        width: 100%;
+        background: $color-black;
+        color: $color-white;
+    }
+
+    & > span {
+        display: block;
+        position: absolute;
+        overflow: hidden;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 0%;
+        transition: 0.5s ease-in-out;
+        -webkit-transition: 0.5s ease-in-out;
+
+        & > span {
+            width:100%;
+            color: $color-white;
+        }
+    }
+
+    // Efecto Hover
+    &:hover > span {
+        height: 100%;
+    }
+}
+
+// Estilos de estructura de lista
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li a {
+        display: inline;
+        float: left;
+        text-decoration: none;
+        font-family: sans-serif;
+    }
+}

@@ -1,0 +1,13 @@
+.btn-transition {
+  padding: 10px 25px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: background-color 0.5s, border-radius 0.5s;
+}
+.btn-transition:hover {
+  background-color: #2ecc71;
+  border-radius: 20px;
+}/*# sourceMappingURL=style.css.map */
