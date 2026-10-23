@@ -1,0 +1,51 @@
+$ball-color-default: #ff4757; // Rojo base
+$ball-color-firefox: #ff9f43; // Naranja
+$ball-color-chrome:   #ccc;// Verde
+$ball-color-edge:    #2e86de; // Azul
+$bg-color:           #2f3542;
+
+body {
+    background-color: $bg-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-100px);
+        -webkit-transform: translateY(-100px);
+    }
+}
+
+.ball {
+    width: 50px;
+    height: 50px;
+    background-color: $ball-color-default;
+    border-radius: 50%;
+    animation: bounce 1s infinite ease-in-out;
+
+    
+
+   // 2. EDGE - Detección para Edge (agrupando correctamente las condiciones lógicas)
+    @supports ( (-ms-ime-align: auto) or ((-webkit-appearance: none) and (not (-webkit-app-region: none))) ) {
+        background-color: $ball-color-edge;
+    }
+
+    // 1. FIREFOX (Gecko) - Único motor que soporta -moz-appearance
+    @supports (-moz-appearance: none) {
+        background-color: $ball-color-firefox;
+    }
+  
+    // 3. CHROME (Chromium puro) - Se coloca al inicio o se acota para que no solape a Edge
+    @supports (-webkit-appearance: none) {
+        // Aseguramos que si es Edge no aplique el de Chrome (si Edge soporta webkit-app-region)
+        background-color: $ball-color-chrome;
+    }
+}
