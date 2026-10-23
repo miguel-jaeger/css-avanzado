@@ -1,0 +1,16 @@
+@keyframes slideIn {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.title-entry {
+  font-family: sans-serif;
+  color: #374151;
+  animation: slideIn 1s ease-out forwards;
+}

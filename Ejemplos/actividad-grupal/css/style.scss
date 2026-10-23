@@ -1,0 +1,281 @@
+// 1. VARIABLES
+$color-black: #000;
+$color-white: #fff;
+$color-gray-bg: #f3f4f6;
+$color-gray-light: #e5e7eb;
+$color-gray-muted: #9ca3af;
+$color-gray-dark: #374151;
+$primary-purple: #7c00ff;
+$primary-purple-hover: #9747cd; // Ajustado a la imagen
+$footer-bg: #310080;
+$feature-card-bg: #2d2d2d;
+$accent-yellow: #ffdd57; // Color de la imagen
+
+// 2. MIXINS
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// 3. ESTILOS BASE
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', 'Roboto', system-ui, sans-serif;
+    background-color: $color-gray-bg;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+// 4. HEADER
+header {
+    background-color: $color-black;
+    color: $color-white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    animation: fadeIn 1s ease-out;
+
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+        a {
+            color: $color-white;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+            animation: fadeIn 1s ease-out;
+
+            &::after {
+                content: "";
+                display: block;
+                width: 0;
+                height: 2px;
+                background: white;
+                transition: width 0.3s;
+            }
+
+            &:hover {
+                color: $color-gray-muted;
+
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .header-icons {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+
+        button,
+        a {
+            background: none;
+            border: none;
+            color: $color-white;
+            cursor: pointer;
+            padding: 0;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+            animation: fadeIn 1s ease-out;
+            text-decoration: none;
+
+            &:hover {
+                color: $accent-yellow;
+            }
+        }
+    }
+}
+
+// 5. HERO SECTION
+.hero {
+    background: linear-gradient(180deg, #111827 0%, $color-gray-dark 40%, $color-gray-muted 85%, #d1d5db 100%);
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+    padding: 80px 20px;
+    text-align: center;
+    color: $color-white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out;
+
+    .hero-content {
+        max-width: 56rem;
+        margin: 0 auto;
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        animation: fadeInUp 1s ease-out 0.5s forwards;
+        animation-fill-mode: backwards;
+    }
+
+    p {
+        font-size: 1.25rem;
+        color: $color-gray-light;
+        margin-bottom: 2.5rem;
+        max-width: 48rem;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.625;
+        animation: fadeInUp 1s ease-out 0.7s forwards;
+        animation-fill-mode: backwards;
+    }
+
+    .hero-btns {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        animation: fadeInUp 1s ease-out 0.9s forwards;
+        animation-fill-mode: backwards;
+        margin-bottom: 3rem;
+    }
+}
+
+// 6. BUTTONS
+.btn-purple {
+    background-color: $primary-purple;
+    color: $color-white;
+    padding: 0.75rem 2.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid $primary-purple;
+    display: inline-block;
+
+    &:hover {
+        background-color: $primary-purple-hover;
+        border-color: $primary-purple-hover;
+        transform: scale(1.05);
+    }
+}
+
+// 7. FEATURES SECTION
+.features-section {
+    max-width: 72rem;
+    margin: -6rem auto 8rem auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 10;
+
+    .features-container {
+        background-color: $feature-card-bg;
+        border-radius: 1.5rem;
+        padding: 4rem;
+        color: $color-white;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        animation: fadeIn 1s ease-out 0.2s forwards;
+        opacity: 0;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        text-align: center;
+
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+
+    .feature-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+
+        .feature-icon {
+            margin-bottom: 1rem;
+            color: #d1d5db;
+            font-size: 2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 0.75rem;
+            color: $color-gray-muted;
+            line-height: 1.4;
+        }
+
+        &:hover {
+            transform: translateY(-5px);
+
+            .feature-icon {
+                color: $primary-purple;
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+// 8. FOOTER
+footer {
+    margin-top: auto;
+
+    .footer-content {
+        background-color: $footer-bg;
+        border-top-left-radius: 50% 25%;
+        border-top-right-radius: 50% 25%;
+        @include flex-center;
+        color: $color-white;
+        padding: 2rem 0;
+    }
+}
+
+// 9. ANIMATIONS
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

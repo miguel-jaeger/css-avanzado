@@ -1,0 +1,25 @@
+@keyframes shine {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.5); }
+}
+
+.card {
+  width: 150px;
+  height: 150px;
+  background: #2d2d2d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  
+  .icon {
+    color: #ffdd57;
+    font-size: 3rem;
+  }
+
+  &:hover {
+    .icon {
+      animation: shine 0.5s infinite alternate;
+    }
+  }
+}
